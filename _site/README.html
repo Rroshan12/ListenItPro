@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>LearnItPro - Table Tracker Library </title>
+    <title>ListenItPro - Table Tracker Library </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="LearnItPro - Table Tracker Library ">
+    <meta name="title" content="ListenItPro - Table Tracker Library ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="favicon.ico">
@@ -60,14 +60,99 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="learnitpro---table-tracker-library">LearnItPro - Table Tracker Library</h1>
+<h1 id="listenitpro---table-tracker-library">ListenItPro - Table Tracker Library</h1>
 
-<p><strong>LearnItPro</strong> is a C# library designed to track changes (insert, update, delete) in a specified database table. It triggers events whenever changes occur, allowing you to respond to data modifications in real-time.</p>
+<p><strong>v</strong> is a C# library designed to track changes (insert, update, delete) in a specified database table. It triggers events whenever changes occur, allowing you to respond to data modifications in real-time.</p>
 <h2 id="installation">Installation</h2>
 <p>To install the package, run the following command:</p>
-<pre><code class="lang-bash">dotnet add package LearnItPro
+<p>dotnet add package ListenItPro</p>
+<h2 id="usage">Usage</h2>
+<p>You can create a separate class to listen to specific tables based on their names. For example, to listen to changes in the JobQueue table, you can define a JobQueueSubscriber class like this:</p>
+<p>csharp
+Copy
+Edit
+using ListenItPro;
+using System.Reflection;
+using System.Text.Json;</p>
+<p>namespace WebApplication1.services
+{
+public class JobsQueue
+{
+public int Id { get; set; } // Maps to the Id column (Primary Key)
+public string JobType { get; set; } // Maps to the JobType column
+public string JobData { get; set; } // Maps to the JobData column
+public string Status { get; set; } // Maps to the Status column (with a default of 'Pending')
+}</p>
+<pre><code>public class JobQueueSubscriber
+{
+    private readonly SqlServerTableChangeListener _listener;
+
+    public JobQueueSubscriber(SqlServerTableChangeListener listener)
+    {
+        _listener = listener;
+        _listener.TableChanged += OnTableChanged;
+    }
+
+    // This will be called when the table change event occurs
+    private void OnTableChanged(object tableData)
+    {
+        Console.WriteLine(&quot;Table data changed:&quot;);
+
+        // Check if tableData is an ExpandoObject
+        if (tableData is System.Dynamic.ExpandoObject expando)
+        {
+            var dict = (IDictionary&lt;string, object&gt;)expando;
+
+            var jobque = _listener.MapToClass&lt;JobsQueue&gt;(dict);
+            // You can handle the changed data here, like updating your application state
+        }
+
+        StartListening();
+    }
+
+    public void StartListening()
+    {
+        // Start listening to changes in the JobsQueue table
+        _listener.StartListeningForTable(&quot;JobsQueue&quot;, &quot;Id&quot;);
+    }
+
+    public void StopListening()
+    {
+        _listener.StopListening();
+    }
+}
 </code></pre>
-</article>
+<p>}
+Key Points:
+You can create a custom class (JobQueueSubscriber in this case) to listen for changes in a specific table (e.g., JobsQueue).
+The class subscribes to changes and processes the events when data in the JobsQueue table is modified.
+You can map the dynamic table data to a strongly-typed class (JobsQueue), enabling you to work with the data as objects.
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details.</p>
+<h1 id="register-service-in-programcs">Register service in Program.cs</h1>
+<p>builder.Services.AddSingleton<sqlservertablechangelistener>(serviceProvider =&gt;
+new SqlServerTableChangeListener(builder.Configuration)); // Register the table listener<p>
+<p>builder.Services.AddSingleton<jobqueuesubscriber>(serviceProvider =&gt;
+new JobQueueSubscriber(serviceProvider.GetRequiredService<sqlservertablechangelistener>())); // Register the subscriber<p>
+<p>var app = builder.Build();</p>
+<p>var subscriber = app.Services.GetRequiredService<jobqueuesubscriber>();
+subscriber.StartListening(); // Start listening for table changes<p>
+<pre><code class="lang-csharp">
+
+
+
+Contributing
+Feel free to contribute! Please refer to CONTRIBUTING.md for more information.
+
+pgsql
+Copy
+Edit
+
+This section explains how users can create separate subscribers for different tables (like the `JobQueue` table) and react to changes specific to those tables. It provides an example that demonstrates how to map the database changes to a C# class (`JobsQueue` in this case).
+
+Let me know if you'd like further adjustments! 😊
+</code></pre>
+</jobqueuesubscriber></sqlservertablechangelistener></jobqueuesubscriber></sqlservertablechangelistener></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

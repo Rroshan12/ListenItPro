@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>ListenItPro</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Roshan Poudel</Authors>
     <Company>Coder</Company>
     <Description>A Table Tracker Library that triggers events whenever an insert, update, or delete operation occurs in a specified table.</Description>
