@@ -1,0 +1,76 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: ListenItPro.com.services
+  name: ListenItPro.com.services
+  href: api/ListenItPro.com.services.html
+  commentId: N:ListenItPro.com.services
+  fullName: ListenItPro.com.services
+  nameWithType: ListenItPro.com.services
+- uid: ListenItPro.com.services.SqlServerTableChangeListener
+  name: SqlServerTableChangeListener
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html
+  commentId: T:ListenItPro.com.services.SqlServerTableChangeListener
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener
+  nameWithType: SqlServerTableChangeListener
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
+  name: SqlServerTableChangeListener(IConfiguration, String)
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener__ctor_Microsoft_Extensions_Configuration_IConfiguration_System_String_
+  commentId: M:ListenItPro.com.services.SqlServerTableChangeListener.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String)
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.SqlServerTableChangeListener(Microsoft.Extensions.Configuration.IConfiguration, System.String)
+  nameWithType: SqlServerTableChangeListener.SqlServerTableChangeListener(IConfiguration, String)
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.#ctor*
+  name: SqlServerTableChangeListener
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener__ctor_
+  commentId: Overload:ListenItPro.com.services.SqlServerTableChangeListener.#ctor
+  isSpec: "True"
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.SqlServerTableChangeListener
+  nameWithType: SqlServerTableChangeListener.SqlServerTableChangeListener
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.MapToClass*
+  name: MapToClass
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_MapToClass_
+  commentId: Overload:ListenItPro.com.services.SqlServerTableChangeListener.MapToClass
+  isSpec: "True"
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.MapToClass
+  nameWithType: SqlServerTableChangeListener.MapToClass
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.MapToClass``1(System.Collections.Generic.IDictionary{System.String,System.Object})
+  name: MapToClass<T>(IDictionary<String, Object>)
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_MapToClass__1_System_Collections_Generic_IDictionary_System_String_System_Object__
+  commentId: M:ListenItPro.com.services.SqlServerTableChangeListener.MapToClass``1(System.Collections.Generic.IDictionary{System.String,System.Object})
+  name.vb: MapToClass(Of T)(IDictionary(Of String, Object))
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.MapToClass<T>(System.Collections.Generic.IDictionary<System.String, System.Object>)
+  fullName.vb: ListenItPro.com.services.SqlServerTableChangeListener.MapToClass(Of T)(System.Collections.Generic.IDictionary(Of System.String, System.Object))
+  nameWithType: SqlServerTableChangeListener.MapToClass<T>(IDictionary<String, Object>)
+  nameWithType.vb: SqlServerTableChangeListener.MapToClass(Of T)(IDictionary(Of String, Object))
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.StartListeningForTable(System.String,System.String)
+  name: StartListeningForTable(String, String)
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_StartListeningForTable_System_String_System_String_
+  commentId: M:ListenItPro.com.services.SqlServerTableChangeListener.StartListeningForTable(System.String,System.String)
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.StartListeningForTable(System.String, System.String)
+  nameWithType: SqlServerTableChangeListener.StartListeningForTable(String, String)
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.StartListeningForTable*
+  name: StartListeningForTable
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_StartListeningForTable_
+  commentId: Overload:ListenItPro.com.services.SqlServerTableChangeListener.StartListeningForTable
+  isSpec: "True"
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.StartListeningForTable
+  nameWithType: SqlServerTableChangeListener.StartListeningForTable
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.StopListening
+  name: StopListening()
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_StopListening
+  commentId: M:ListenItPro.com.services.SqlServerTableChangeListener.StopListening
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.StopListening()
+  nameWithType: SqlServerTableChangeListener.StopListening()
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.StopListening*
+  name: StopListening
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_StopListening_
+  commentId: Overload:ListenItPro.com.services.SqlServerTableChangeListener.StopListening
+  isSpec: "True"
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.StopListening
+  nameWithType: SqlServerTableChangeListener.StopListening
+- uid: ListenItPro.com.services.SqlServerTableChangeListener.TableChanged
+  name: TableChanged
+  href: api/ListenItPro.com.services.SqlServerTableChangeListener.html#ListenItPro_com_services_SqlServerTableChangeListener_TableChanged
+  commentId: E:ListenItPro.com.services.SqlServerTableChangeListener.TableChanged
+  fullName: ListenItPro.com.services.SqlServerTableChangeListener.TableChanged
+  nameWithType: SqlServerTableChangeListener.TableChanged

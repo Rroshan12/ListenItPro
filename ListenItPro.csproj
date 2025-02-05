@@ -6,7 +6,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>ListenItPro</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Roshan Poudel</Authors>
+    <Company>Coder</Company>
+    <Description>A Table Tracker Library that triggers events whenever an insert, update, or delete operation occurs in a specified table.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>.NET, C#, Library, SQL, Table Tracker</PackageTags>
+    <RepositoryUrl>https://github.com/Rroshan12/ListenItPro.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Rroshan12/ListenItPro</PackageProjectUrl>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="docfx.console" Version="2.59.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.1" />
   </ItemGroup>
