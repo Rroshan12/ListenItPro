@@ -10,11 +10,19 @@ using System.Threading.Tasks;
 
 namespace ListenItPro.com.services
 {
+
+    /// <summary>
+    /// class take table connection string table name and columns
+    /// register service for tabe
+    /// listen for changes in table
+    /// update the client project 
+    /// @param connectionString table name and columns configuration
+    /// </summary>
     public class SqlServerTableChangeListener
     {
         private readonly string _connectionString;
-        private SqlDependency? _dependency; // For a single table
-        public event Action<object>? TableChanged; // Event for any table change
+        private SqlDependency? _dependency; 
+        public event Action<object>? TableChanged; 
 
         public SqlServerTableChangeListener(IConfiguration configuration, string connectionName = "DefaultConnection")
         {
@@ -22,22 +30,17 @@ namespace ListenItPro.com.services
                 ?? throw new ArgumentNullException(nameof(connectionName), "Connection string not found.");
         }
 
-        // Start listening for changes in a single table
         public void StartListeningForTable(string tableName, string columns = "*")
         {
             SqlDependency.Start(_connectionString);
-
-            // Register dependency for the specific table
             RegisterDependency(tableName, columns);
         }
 
-        // Stop listening for changes
         public void StopListening()
         {
             SqlDependency.Stop(_connectionString);
         }
 
-        // Register dependency for a specific table
         private void RegisterDependency(string tableName, string columns)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -53,7 +56,6 @@ namespace ListenItPro.com.services
             }
         }
 
-        // Event handler when a change is detected
         private void OnNotificationChange(object sender, SqlNotificationEventArgs e, string tableName)
         {
             if (e.Info == SqlNotificationInfo.Insert || e.Info == SqlNotificationInfo.Update || e.Info == SqlNotificationInfo.Delete)
@@ -61,16 +63,13 @@ namespace ListenItPro.com.services
                 var latestRecord = GetLatestRecord(tableName);
                 if (latestRecord != null)
                 {
-                    // Notify all subscribers with the full record
                     TableChanged?.Invoke(latestRecord);
                 }
             }
-
-            // Re-register for future changes to continue listening
             RegisterDependency(tableName, "*");
         }
 
-        // Fetch the latest record for a table
+
         private object? GetLatestRecord(string tableName)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -82,7 +81,7 @@ namespace ListenItPro.com.services
                     {
                         if (reader.Read())
                         {
-                            return MapToDynamicEntity(reader); // Map SQL data to dynamic object
+                            return MapToDynamicEntity(reader);
                         }
                     }
                 }
@@ -90,7 +89,6 @@ namespace ListenItPro.com.services
             return null;
         }
 
-        // Map SQL data to a dynamic object for all columns
         private object MapToDynamicEntity(SqlDataReader reader)
         {
             var expandoObject = new System.Dynamic.ExpandoObject();
@@ -105,8 +103,6 @@ namespace ListenItPro.com.services
         }
 
 
-
-
         public T MapToClass<T>(IDictionary<string, object> dict) where T : new()
         {
             var obj = new T();
@@ -114,18 +110,13 @@ namespace ListenItPro.com.services
 
             foreach (var kvp in dict)
             {
-                // Get the property in the class that matches the dictionary key
                 var property = objType.GetProperty(kvp.Key, BindingFlags.Public | BindingFlags.IgnoreCase | BindingFlags.Instance);
-
-                // If the property exists, set its value
                 if (property != null && kvp.Value != null && property.CanWrite)
                 {
-                    // Convert the value to the type of the property
                     var value = Convert.ChangeType(kvp.Value, property.PropertyType);
                     property.SetValue(obj, value);
                 }
             }
-
             return obj;
         }
     }
